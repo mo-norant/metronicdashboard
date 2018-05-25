@@ -6,6 +6,7 @@ import { ShopComponent } from './shop/shop.component';
 import { Route, RouterModule } from '@angular/router';
 import { ItemComponent } from './item/item.component';
 
+import {FormsModule} from '@angular/forms'
 
 const routes: Route[] = [
   {
@@ -22,7 +23,8 @@ const routes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    FormsModule
   ],
   providers:[OogstkaartService],
   declarations: [ShopComponent, ItemComponent],

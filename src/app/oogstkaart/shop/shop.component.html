@@ -28,38 +28,49 @@
             <div id="toggleBrands" class="accordion-body collapse show" role="tabpanel" aria-labelledby="brands">
               <div class="card-body">
                 <ul class="list list-unstyled mb-0">
-                  <li *ngFor="let item of categories"><a>{{item}} </a></li>
-
+                  <button (click)="filter(item)" *ngFor="let item of categories" type="button" class="btn btn-primary m-2">
+                      {{item}} <span class="badge badge-light m-1">x</span>
+                    </button>
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </aside>
+
       <div class="col-md-8 col-lg-9 order-1 order-md-2 mb-5 mb-md-0">
         <div class="row align-items-center justify-content-between mb-4">
-          <div class="col-auto mb-3 mb-sm-0">
-            <form method="get">
-              <div class="custom-select-1">
-                <select class="form-control border">
-                  <option value="popularity">Sort by popularity</option>
-                  <option value="rating">Sort by average rating</option>
-                  <option value="date" selected="selected">Sort by newness</option>
-                  <option value="price">Sort by price: low to high</option>
-                  <option value="price-desc">Sort by price: high to low</option>
+
+          <div class="col-auto mb-3 mb-sm-0" >
+              <p-progressSpinner *ngIf="!items" strokeWidth = 5></p-progressSpinner>
+              <div class="custom-select-1" *ngIf="isListview">
+                <select [(ngModel)]="sorting" (change)="sort($event)" class="form-control border" >
+                  <option value="alphabetic">Sorteer alfabetisch</option>
+                  <option value="popularity">Sorteer populaire producten</option>
+                  <option value="date" selected="selected">Sorteer meest recente</option>
+                  <option value="price">Sorteer volgens prijs</option>
                 </select>
               </div>
-            </form>
           </div>
           <div class="col-auto">
             <div class="d-flex align-items-center">
               <span>{{items?.length}} resultaten</span>
-              <a (click)='mapview()' class="text-color-dark text-3 ml-2" data-toggle="tooltip" data-placement="top" title="List"><i class="fas fa-map"></i></a>
-              <a (click)='mapview()' class="text-color-dark text-3 ml-2" data-toggle="tooltip" data-placement="top" title="Grid"><i class="fas fa-th"></i></a>
+              <a (click)='mapview(false)' class="text-color-dark text-3 ml-2" data-toggle="tooltip" data-placement="top" title="Map"><i class="fas fa-map"></i></a>
+              <a (click)='mapview(true)' class="text-color-dark text-3 ml-2" data-toggle="tooltip" data-placement="top" title="Grid"><i class="fas fa-th"></i></a>
             </div>
           </div>
         </div>
-        <div class="row">
+
+        <div [hidden]='isListview' class="row">
+            <div class="col-md-12">
+              <div class="text-center">
+                <h3>
+                  <div #gmap style="width:100%;height:400px"></div>
+                </h3>
+              </div>
+            </div>
+          </div>
+        <div class="row" *ngIf="isListview">
 
           <div *ngFor="let item of items" class="col-sm-6 mb-4">
 
