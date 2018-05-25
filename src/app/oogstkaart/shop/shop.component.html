@@ -78,7 +78,7 @@
               <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
                 <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
                   <a [routerLink]=" item.oogstkaartItemID">
-                    <img [src]="root + '/uploads/image/' + item.avatar.uri" class="img-fluid" alt="">
+                    <img [src]="root + '/uploads/image/' + item.avatar?.uri" class="img-fluid" alt="">
                   </a>
                   <span class="image-frame-action">
                     <a [routerLink]=" item.oogstkaartItemID" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">Bekijk product</a>

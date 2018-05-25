@@ -6,7 +6,8 @@ import { ShopComponent } from './shop/shop.component';
 import { Route, RouterModule } from '@angular/router';
 import { ItemComponent } from './item/item.component';
 
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { ContactComponent } from './contact/contact.component'
 
 const routes: Route[] = [
   {
@@ -16,6 +17,10 @@ const routes: Route[] = [
   {
     path: 'oogstkaart/:id',
     component: ItemComponent,
+  },
+  {
+    path: 'oogstkaart/contact/:id',
+    component: ContactComponent,
   },
 ];
 
@@ -27,7 +32,7 @@ const routes: Route[] = [
     FormsModule
   ],
   providers:[OogstkaartService],
-  declarations: [ShopComponent, ItemComponent],
-  exports:[ShopComponent, ItemComponent]
+  declarations: [ShopComponent, ItemComponent, ContactComponent],
+  exports:[ShopComponent, ItemComponent, ContactComponent]
 })
 export class OogstkaartModule { }

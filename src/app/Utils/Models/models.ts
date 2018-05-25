@@ -14,6 +14,7 @@
         createDate: Date;
         phone: string;
         address: Address;
+        email: string;
     }
 
     export class Weight {
@@ -42,9 +43,9 @@
         vraagPrijsPerEenheid: number;
         vraagPrijsTotaal: number;
         onlineStatus: boolean;
-        concept: string;  
-        transportInbegrepen: boolean;  
-        userID: string;  
+        concept: string;
+        transportInbegrepen: boolean;
+        userID: string;
         Views: number;
         avatar : Afbeelding;
         specificaties: Specificatie[];
@@ -68,6 +69,23 @@
         specificatieOmschrijving: string;
     }
 
+    export class Message {
+      messageID: number;
+      created: Date;
+      messageString: string;
+      opened: boolean;
+  }
+
+  export class Request {
+      requestID: number;
+      name: string;
+      company: Company;
+      status: string;
+      create: Date;
+      userViewed: boolean;
+      messages: Message[];
+  }
 
 
-        
+
+

@@ -6,7 +6,7 @@ import {} from "@types/googlemaps";
 import { Router } from "@angular/router";
 
 declare var google: any;
-
+declare var MarkerClusterer: any;
 @Component({
   selector: "app-shop",
   templateUrl: "./shop.component.html",
